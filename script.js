@@ -5,18 +5,27 @@ const orientationContent={
   team:{kicker:'Team',text:'Raum und Zeit arbeitet in einer kleinen Praxisstruktur. Dadurch entstehen persönliche Kontinuität, fachlicher Austausch und die Möglichkeit, Entwicklungen über mehrere Termine hinweg wirklich wahrzunehmen.',link:'#team',label:'Team kennenlernen'}
 };
 
-document.querySelectorAll('.orientation-item').forEach(btn=>{
+const renderOrientationAnswer=(key)=>{
+  const c=orientationContent[key];
+  return `<div class="answer-inner"><div class="answer-kicker">${c.kicker}</div><p>${c.text}</p><a href="${c.link}">${c.label} <span>→</span></a></div>`;
+};
+
+document.querySelectorAll('.orientation-entry').forEach(entry=>{
+  const btn=entry.querySelector('.orientation-item');
+  const answer=entry.querySelector('.orientation-inline-answer');
+  answer.innerHTML=renderOrientationAnswer(btn.dataset.key);
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.orientation-item').forEach(item=>item.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    const c=orientationContent[btn.dataset.key];
-    const answer=document.querySelector('.orientation-answer');
-    answer.animate([{opacity:.25,transform:'translateY(6px)'},{opacity:1,transform:'translateY(0)'}],{duration:260,easing:'cubic-bezier(.2,.75,.25,1)'});
-    document.querySelector('[data-answer-kicker]').textContent=c.kicker;
-    document.querySelector('[data-answer]').textContent=c.text;
-    const link=document.querySelector('[data-answer-link]');
-    link.href=c.link;
-    link.firstChild.textContent=c.label+' ';
+    const wasOpen=entry.classList.contains('is-open');
+    document.querySelectorAll('.orientation-entry').forEach(item=>{
+      item.classList.remove('is-open');
+      item.querySelector('.orientation-item').classList.remove('is-active');
+      item.querySelector('.orientation-item').setAttribute('aria-expanded','false');
+    });
+    if(!wasOpen){
+      entry.classList.add('is-open');
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-expanded','true');
+    }
   });
 });
 
@@ -28,13 +37,27 @@ const therapyContent={
   becken:{kicker:'Beckenboden & Funktion',copy:'Beckenbodenbeschwerden werden in Verbindung mit Atmung, Spannung, Bewegung und Alltag betrachtet. Ziel ist eine verständliche und individuell passende funktionelle Begleitung.'}
 };
 
-document.querySelectorAll('.therapy-row').forEach(btn=>{
+const renderTherapyDetail=(key)=>{
+  const c=therapyContent[key];
+  return `<div class="therapy-detail-inner"><span class="eyebrow dark-label">${c.kicker}</span><p>${c.copy}</p></div>`;
+};
+
+document.querySelectorAll('.therapy-entry').forEach(entry=>{
+  const btn=entry.querySelector('.therapy-row');
+  const detail=entry.querySelector('.therapy-inline-detail');
+  detail.innerHTML=renderTherapyDetail(btn.dataset.therapy);
   btn.addEventListener('click',()=>{
-    document.querySelectorAll('.therapy-row').forEach(item=>item.classList.remove('is-active'));
-    btn.classList.add('is-active');
-    const c=therapyContent[btn.dataset.therapy];
-    document.querySelector('[data-therapy-kicker]').textContent=c.kicker;
-    document.querySelector('[data-therapy-copy]').textContent=c.copy;
+    const wasOpen=entry.classList.contains('is-open');
+    document.querySelectorAll('.therapy-entry').forEach(item=>{
+      item.classList.remove('is-open');
+      item.querySelector('.therapy-row').classList.remove('is-active');
+      item.querySelector('.therapy-row').setAttribute('aria-expanded','false');
+    });
+    if(!wasOpen){
+      entry.classList.add('is-open');
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-expanded','true');
+    }
   });
 });
 
