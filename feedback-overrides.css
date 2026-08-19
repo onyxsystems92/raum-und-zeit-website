@@ -9,13 +9,8 @@
   overflow:hidden;
   grid-template-columns:1.02fr .98fr;
 }
-.hero .panel{
-  border-color:rgba(246,243,237,.16);
-}
-.hero-dark{
-  border-radius:0;
-  border-right:0;
-}
+.hero .panel{border-color:rgba(246,243,237,.16)}
+.hero-dark{border-radius:0;border-right:0}
 .hero-light{
   border-radius:0;
   border-left:1px solid rgba(246,243,237,.16);
@@ -24,150 +19,105 @@
 }
 .hero-light .dark-label,
 .hero-light .orientation-status,
-.hero-light .orientation-item .num{
-  color:rgba(246,243,237,.56);
-}
+.hero-light .orientation-item .num{color:rgba(246,243,237,.56)}
 .hero-light .orientation-list,
-.hero-light .orientation-item,
-.hero-light .orientation-answer{
-  border-color:rgba(246,243,237,.16);
-}
-.hero-light .orientation-item{
-  color:rgba(246,243,237,.8);
-}
-.hero-light .orientation-item:hover{
-  background:rgba(255,255,255,.045);
-  color:var(--paper);
-}
-.hero-light .orientation-item.is-active{
-  background:var(--paper);
-  color:var(--ink);
-}
-.hero-light .orientation-item.is-active .num{
-  color:var(--ci-gold);
-}
-.hero-light .orientation-answer p{
-  color:rgba(246,243,237,.72);
-}
-.hero-light .orientation-answer a{
-  color:var(--paper);
-}
-.hero-light .answer-kicker{
-  color:var(--ci-coral);
-}
+.hero-light .orientation-item{border-color:rgba(246,243,237,.16)}
+.hero-light .orientation-item{color:rgba(246,243,237,.8)}
+.hero-light .orientation-item:hover{background:rgba(255,255,255,.045);color:var(--paper)}
+.hero-light .orientation-item.is-active{background:var(--paper);color:var(--ink)}
+.hero-light .orientation-item.is-active .num{color:var(--ci-gold)}
 
-/* 2) Therapy remains the bright counterpoint, but the visual becomes the Raum-&-Zeit signature moment */
-.therapy{
-  background:var(--paper);
-}
-.therapy-visual{
-  background:var(--paper-2);
-}
-.therapy-visual:before{
-  inset:10%;
-  border-color:rgba(22,24,23,.14);
-  border-radius:50%;
-}
-.therapy-visual:after{
-  content:"Z";
-  position:absolute;
-  inset:0;
+/* Inline accordion: answer always opens directly below the selected question. */
+.orientation-entry{border-bottom:1px solid rgba(246,243,237,.16)}
+.orientation-entry .orientation-item{border-bottom:0}
+.orientation-inline-answer{
   display:grid;
-  place-items:center;
-  font-size:clamp(180px,24vw,360px);
-  line-height:.7;
-  font-weight:500;
-  letter-spacing:-.16em;
-  color:rgba(22,24,23,.055);
-  transform:scaleX(.82);
-  pointer-events:none;
+  grid-template-rows:0fr;
+  opacity:0;
+  transition:grid-template-rows .3s var(--ease),opacity .25s var(--ease),padding .3s var(--ease);
+  padding:0 20px 0 58px;
 }
-.body-line{
-  background:rgba(22,24,23,.16);
-  z-index:2;
+.orientation-inline-answer>.answer-inner{overflow:hidden}
+.orientation-entry.is-open .orientation-inline-answer{
+  grid-template-rows:1fr;
+  opacity:1;
+  padding:20px 20px 24px 58px;
 }
-.node{
-  border-color:var(--paper);
-  box-shadow:0 0 0 6px rgba(22,24,23,.035);
-  z-index:3;
+.orientation-inline-answer .answer-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ci-coral);font-weight:600}
+.orientation-inline-answer p{font-size:16px;line-height:1.5;color:rgba(246,243,237,.72);margin:10px 0 14px;max-width:580px}
+.orientation-inline-answer a{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:13px;color:var(--paper)}
+.orientation-entry.is-open .orientation-item .arrow{transform:rotate(90deg);opacity:1}
+
+/* 2) Therapy remains the bright counterpoint; the visual merges Raum, Zeit, Z and hourglass. */
+.therapy{background:var(--paper)}
+.therapy-visual{background:var(--paper-2);display:grid;place-items:center;padding:42px}
+.therapy-visual:before,.therapy-visual:after,.body-line,.node,.hourglass-large{display:none}
+.raumzeit-symbol{width:min(92%,520px);height:auto;overflow:visible}
+.rz-orbit{fill:none;stroke:rgba(22,24,23,.14);stroke-width:1.5}
+.rz-hourglass{fill:none;stroke:rgba(22,24,23,.55);stroke-width:2.2;stroke-linejoin:round}
+.rz-z{fill:none;stroke:rgba(22,24,23,.16);stroke-width:30;stroke-linecap:square;stroke-linejoin:miter}
+.rz-dot{stroke:var(--paper);stroke-width:3}.dot-a{fill:var(--ci-coral)}.dot-b{fill:var(--ci-gold)}.dot-c{fill:var(--ci-sage)}.dot-d{fill:var(--ci-blue)}
+
+/* Therapy accordion: detail opens directly under selected treatment context. */
+.therapy-list{display:block}
+.therapy-entry{border-bottom:1px solid var(--line)}
+.therapy-entry .therapy-row{border-bottom:0;width:100%}
+.therapy-inline-detail{
+  display:grid;
+  grid-template-rows:0fr;
+  opacity:0;
+  background:var(--paper);
+  transition:grid-template-rows .3s var(--ease),opacity .25s var(--ease),padding .3s var(--ease);
+  padding:0 26px;
 }
-.hourglass-large{
-  opacity:.95;
-  z-index:4;
-  right:5%;
-  bottom:-7%;
-  width:64%;
-}
-.hourglass-large path{
-  stroke:rgba(22,24,23,.52);
-  stroke-width:1.1;
-}
+.therapy-inline-detail>.therapy-detail-inner{overflow:hidden}
+.therapy-entry.is-open .therapy-inline-detail{grid-template-rows:1fr;opacity:1;padding:22px 26px 26px}
+.therapy-inline-detail p{font-size:17px;line-height:1.55;max-width:620px;margin:10px 0 0;color:var(--graphite)}
+.therapy-entry.is-open .therapy-row{background:var(--paper);box-shadow:inset 4px 0 0 var(--ci-sage)}
 
 /* 3) Wordmark: let the Z itself echo an hourglass, while keeping the existing mark */
-.brand-wordmark{
-  display:inline-flex;
-  align-items:baseline;
-  gap:.05em;
-  white-space:nowrap;
-}
-.zeit-z{
-  position:relative;
-  display:inline-block;
-  width:.72em;
-  margin-right:.01em;
-  text-align:center;
-  font-weight:600;
-}
-.zeit-z::before,
-.zeit-z::after{
-  content:"";
-  position:absolute;
-  left:50%;
-  width:.72em;
-  height:1px;
-  background:currentColor;
-  transform-origin:center;
-  opacity:.42;
-}
+.brand-wordmark{display:inline-flex;align-items:baseline;gap:.05em;white-space:nowrap}
+.zeit-z{position:relative;display:inline-block;width:.72em;margin-right:.01em;text-align:center;font-weight:600}
+.zeit-z::before,.zeit-z::after{content:"";position:absolute;left:50%;width:.72em;height:1px;background:currentColor;transform-origin:center;opacity:.42}
 .zeit-z::before{top:.18em;transform:translateX(-50%) rotate(28deg)}
 .zeit-z::after{bottom:.12em;transform:translateX(-50%) rotate(-28deg)}
-.brand:hover .zeit-z::before,
-.brand:hover .zeit-z::after{opacity:.8}
+.brand:hover .zeit-z::before,.brand:hover .zeit-z::after{opacity:.8}
 
-/* 4) Contact closes the sequence in the same dark colour world as hero/team */
-.contact-card{
-  background:var(--dark);
-}
-.map-placeholder{
-  background:#252e2a;
-  border-left:1px solid rgba(246,243,237,.12);
-}
-.map-grid{
-  background-image:
-    linear-gradient(rgba(246,243,237,.08) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(246,243,237,.08) 1px,transparent 1px);
-}
-.map-grid:after{
-  background:var(--ci-blue);
-  opacity:.7;
-}
-.map-pin{
-  background:var(--paper);
-  border-color:rgba(246,243,237,.14);
-}
+/* 4) Team hierarchy: Sarah as the clear lead, Anja + Jessica evenly below. */
+.team-cards-refined{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.team-cards-refined .person-sarah-wide{grid-column:1 / -1;grid-row:auto;display:grid;grid-template-columns:1.35fr .65fr;min-height:360px}
+.team-cards-refined .person-sarah-wide .portrait{min-height:360px}
+.team-cards-refined .person-sarah-wide .person-meta{justify-content:flex-end;padding:28px}
+.team-cards-refined .person-sarah-wide .person-meta strong{font-size:26px}
+.team-cards-refined .person-square{display:flex;flex-direction:column;aspect-ratio:1 / 1}
+.team-cards-refined .person-square .portrait{min-height:0;flex:1}
+.team-cards-refined .person-square .person-meta{min-height:92px}
 
-/* Alternating sectional rhythm: white stays white, dark stays dark. */
+/* 5) Contact closes the sequence in the same dark colour world as hero/team */
+.contact-card{background:var(--dark)}
+.map-placeholder{background:#252e2a;border-left:1px solid rgba(246,243,237,.12)}
+.map-grid{background-image:linear-gradient(rgba(246,243,237,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(246,243,237,.08) 1px,transparent 1px)}
+.map-grid:after{background:var(--ci-blue);opacity:.7}
+.map-pin{background:var(--paper);border-color:rgba(246,243,237,.14)}
 .news{background:var(--paper)}
 
 @media(max-width:980px){
   .hero{grid-template-columns:1fr}
   .hero-dark{border-radius:0;min-height:560px}
-  .hero-light{border-left:0;border-top:1px solid rgba(246,243,237,.16);border-radius:0;min-height:620px}
+  .hero-light{border-left:0;border-top:1px solid rgba(246,243,237,.16);border-radius:0;min-height:auto}
   .map-placeholder{border-left:0;border-top:1px solid rgba(246,243,237,.12)}
+  .team-cards-refined .person-sarah-wide{grid-template-columns:1fr;min-height:0}
+  .team-cards-refined .person-sarah-wide .portrait{min-height:360px}
 }
 
 @media(max-width:680px){
   .hero{border-radius:16px}
-  .therapy-visual:after{font-size:210px}
-  .hourglass-large{width:72%;right:-2%}
+  .orientation-inline-answer{padding-left:42px}
+  .orientation-entry.is-open .orientation-inline-answer{padding:18px 10px 22px 42px}
+  .therapy-visual{padding:24px;min-height:340px}
+  .therapy-entry.is-open .therapy-inline-detail{padding:18px 18px 22px}
+  .team-cards-refined{grid-template-columns:1fr}
+  .team-cards-refined .person-sarah-wide{grid-column:auto}
+  .team-cards-refined .person-square{aspect-ratio:auto}
+  .team-cards-refined .person-square .portrait{min-height:300px}
 }
