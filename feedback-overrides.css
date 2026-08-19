@@ -27,9 +27,23 @@
 .hero-light .orientation-item.is-active{background:var(--paper);color:var(--ink)}
 .hero-light .orientation-item.is-active .num{color:var(--ci-gold)}
 
-/* Inline accordion: answer always opens directly below the selected question. */
+/* Inline accordion: answer opens directly inside the selected question row. */
 .orientation-entry{border-bottom:1px solid rgba(246,243,237,.16)}
-.orientation-entry .orientation-item{border-bottom:0}
+.orientation-entry .orientation-item{border-bottom:0;position:relative;padding-right:54px}
+.orientation-item .arrow{display:none}
+.orientation-item::after{
+  content:"+";
+  position:absolute;
+  right:20px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:22px;
+  line-height:1;
+  font-weight:400;
+  opacity:.62;
+  transition:transform .25s var(--ease),opacity .2s var(--ease);
+}
+.orientation-entry.is-open .orientation-item::after{transform:translateY(-50%) rotate(45deg);opacity:1}
 .orientation-inline-answer{
   display:grid;
   grid-template-rows:0fr;
@@ -42,11 +56,11 @@
   grid-template-rows:1fr;
   opacity:1;
   padding:20px 20px 24px 58px;
+  border-top:1px solid rgba(246,243,237,.10);
 }
 .orientation-inline-answer .answer-kicker{font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--ci-coral);font-weight:600}
 .orientation-inline-answer p{font-size:16px;line-height:1.5;color:rgba(246,243,237,.72);margin:10px 0 14px;max-width:580px}
 .orientation-inline-answer a{display:inline-flex;gap:8px;align-items:center;font-weight:600;font-size:13px;color:var(--paper)}
-.orientation-entry.is-open .orientation-item .arrow{transform:rotate(90deg);opacity:1}
 
 /* 2) Therapy remains the bright counterpoint; the visual merges Raum, Zeit, Z and hourglass. */
 .therapy{background:var(--paper)}
@@ -58,10 +72,23 @@
 .rz-z{fill:none;stroke:rgba(22,24,23,.16);stroke-width:30;stroke-linecap:square;stroke-linejoin:miter}
 .rz-dot{stroke:var(--paper);stroke-width:3}.dot-a{fill:var(--ci-coral)}.dot-b{fill:var(--ci-gold)}.dot-c{fill:var(--ci-sage)}.dot-d{fill:var(--ci-blue)}
 
-/* Therapy accordion: detail opens directly under selected treatment context. */
+/* Therapy accordion: each treatment context expands in place, not in a detached block below the list. */
 .therapy-list{display:block}
 .therapy-entry{border-bottom:1px solid var(--line)}
-.therapy-entry .therapy-row{border-bottom:0;width:100%}
+.therapy-entry .therapy-row{border-bottom:0;width:100%;position:relative;padding-right:62px}
+.therapy-row::after{
+  content:"+";
+  position:absolute;
+  right:24px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:22px;
+  line-height:1;
+  color:var(--graphite);
+  opacity:.48;
+  transition:transform .25s var(--ease),opacity .2s var(--ease);
+}
+.therapy-entry.is-open .therapy-row::after{transform:translateY(-50%) rotate(45deg);opacity:1}
 .therapy-inline-detail{
   display:grid;
   grid-template-rows:0fr;
@@ -71,7 +98,12 @@
   padding:0 26px;
 }
 .therapy-inline-detail>.therapy-detail-inner{overflow:hidden}
-.therapy-entry.is-open .therapy-inline-detail{grid-template-rows:1fr;opacity:1;padding:22px 26px 26px}
+.therapy-entry.is-open .therapy-inline-detail{
+  grid-template-rows:1fr;
+  opacity:1;
+  padding:22px 26px 26px;
+  border-top:1px solid var(--line);
+}
 .therapy-inline-detail p{font-size:17px;line-height:1.55;max-width:620px;margin:10px 0 0;color:var(--graphite)}
 .therapy-entry.is-open .therapy-row{background:var(--paper);box-shadow:inset 4px 0 0 var(--ci-sage)}
 
@@ -83,13 +115,19 @@
 .zeit-z::after{bottom:.12em;transform:translateX(-50%) rotate(-28deg)}
 .brand:hover .zeit-z::before,.brand:hover .zeit-z::after{opacity:.8}
 
-/* 4) Team hierarchy: Sarah as the clear lead, Anja + Jessica evenly below. */
+/* 4) Team hierarchy: Sarah highlighted across the top; Anja + Jessica equal below. Annika is intentionally absent. */
 .team-cards-refined{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-.team-cards-refined .person-sarah-wide{grid-column:1 / -1;grid-row:auto;display:grid;grid-template-columns:1.35fr .65fr;min-height:360px}
+.team-cards-refined .person-sarah-wide{
+  grid-column:1 / -1;
+  grid-row:auto;
+  display:grid;
+  grid-template-columns:1.35fr .65fr;
+  min-height:360px;
+}
 .team-cards-refined .person-sarah-wide .portrait{min-height:360px}
 .team-cards-refined .person-sarah-wide .person-meta{justify-content:flex-end;padding:28px}
 .team-cards-refined .person-sarah-wide .person-meta strong{font-size:26px}
-.team-cards-refined .person-square{display:flex;flex-direction:column;aspect-ratio:1 / 1}
+.team-cards-refined .person-square{display:flex;flex-direction:column;aspect-ratio:1 / 1;min-width:0}
 .team-cards-refined .person-square .portrait{min-height:0;flex:1}
 .team-cards-refined .person-square .person-meta{min-height:92px}
 
@@ -112,9 +150,13 @@
 
 @media(max-width:680px){
   .hero{border-radius:16px}
+  .orientation-entry .orientation-item{padding-right:46px}
+  .orientation-item::after{right:14px}
   .orientation-inline-answer{padding-left:42px}
   .orientation-entry.is-open .orientation-inline-answer{padding:18px 10px 22px 42px}
   .therapy-visual{padding:24px;min-height:340px}
+  .therapy-entry .therapy-row{padding-right:54px}
+  .therapy-row::after{right:16px}
   .therapy-entry.is-open .therapy-inline-detail{padding:18px 18px 22px}
   .team-cards-refined{grid-template-columns:1fr}
   .team-cards-refined .person-sarah-wide{grid-column:auto}
