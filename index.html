@@ -38,15 +38,22 @@
           <div class="orientation-status"><span class="status-dot"></span>Auswählen</div>
         </div>
         <div class="orientation-list" role="list">
-          <button class="orientation-item is-active" data-key="fit" role="listitem"><span class="num">01</span><span>Passt die Arbeitsweise zu mir?</span><span class="arrow">↗</span></button>
-          <button class="orientation-item" data-key="time" role="listitem"><span class="num">02</span><span>Ich suche eine Praxis, die sich mehr Zeit nimmt.</span><span class="arrow">↗</span></button>
-          <button class="orientation-item" data-key="therapy" role="listitem"><span class="num">03</span><span>Ich möchte die Therapie besser verstehen.</span><span class="arrow">↗</span></button>
-          <button class="orientation-item" data-key="team" role="listitem"><span class="num">04</span><span>Ich interessiere mich für das Team.</span><span class="arrow">↗</span></button>
-        </div>
-        <div class="orientation-answer" aria-live="polite">
-          <div class="answer-kicker" data-answer-kicker>Arbeitsweise</div>
-          <p data-answer>Raum und Zeit betrachtet nicht nur den offensichtlichen Schmerzort. Bewegung, Funktion, Kompensationen, Atmung und Reaktion des Nervensystems helfen dabei, ein Gesamtbild zu entwickeln.</p>
-          <a href="#therapie" data-answer-link>Arbeitsweise ansehen <span>→</span></a>
+          <div class="orientation-entry is-open" data-entry="fit">
+            <button class="orientation-item is-active" data-key="fit" role="listitem" aria-expanded="true"><span class="num">01</span><span>Passt die Arbeitsweise zu mir?</span><span class="arrow">↗</span></button>
+            <div class="orientation-inline-answer" data-inline-answer="fit" aria-live="polite"></div>
+          </div>
+          <div class="orientation-entry" data-entry="time">
+            <button class="orientation-item" data-key="time" role="listitem" aria-expanded="false"><span class="num">02</span><span>Ich suche eine Praxis, die sich mehr Zeit nimmt.</span><span class="arrow">↗</span></button>
+            <div class="orientation-inline-answer" data-inline-answer="time"></div>
+          </div>
+          <div class="orientation-entry" data-entry="therapy">
+            <button class="orientation-item" data-key="therapy" role="listitem" aria-expanded="false"><span class="num">03</span><span>Ich möchte die Therapie besser verstehen.</span><span class="arrow">↗</span></button>
+            <div class="orientation-inline-answer" data-inline-answer="therapy"></div>
+          </div>
+          <div class="orientation-entry" data-entry="team">
+            <button class="orientation-item" data-key="team" role="listitem" aria-expanded="false"><span class="num">04</span><span>Ich interessiere mich für das Team.</span><span class="arrow">↗</span></button>
+            <div class="orientation-inline-answer" data-inline-answer="team"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -54,14 +61,35 @@
     <section class="therapy section shell" id="therapie">
       <div class="section-heading"><span class="eyebrow dark-label">Therapie</span><h2>Verstehen, bevor behandelt wird.</h2><p>Methoden sind Werkzeuge. Entscheidend ist, welche Zusammenhänge im individuellen Fall relevant sind.</p></div>
       <div class="therapy-stage">
-        <div class="therapy-visual" aria-hidden="true"><div class="body-line"></div><div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div><div class="hourglass-large"><svg viewBox="0 0 160 220"><path d="M24 20h112c0 44-19 70-56 90-37-20-56-46-56-90Z"/><path d="M24 200h112c0-44-19-70-56-90-37 20-56 46-56 90Z"/></svg></div></div>
+        <div class="therapy-visual" aria-label="Abstrakte Verbindung von Raum, Zeit, Sanduhr und dem Buchstaben Z">
+          <svg class="raumzeit-symbol" viewBox="0 0 520 620" role="img" aria-label="Abstrakte Sanduhr mit integriertem Z">
+            <circle class="rz-orbit" cx="260" cy="310" r="205"/>
+            <path class="rz-hourglass" d="M120 92H400C400 182 350 245 260 310C170 245 120 182 120 92ZM120 528H400C400 438 350 375 260 310C170 375 120 438 120 528Z"/>
+            <path class="rz-z" d="M154 170H366L170 450H382"/>
+            <circle class="rz-dot dot-a" cx="137" cy="205" r="7"/><circle class="rz-dot dot-b" cx="183" cy="326" r="7"/><circle class="rz-dot dot-c" cx="135" cy="420" r="7"/><circle class="rz-dot dot-d" cx="222" cy="493" r="7"/>
+          </svg>
+        </div>
         <div class="therapy-list" data-therapy-list>
-          <button class="therapy-row is-active" data-therapy="orthopaedie"><span>Orthopädie & Bewegungsapparat</span><span>01</span></button>
-          <button class="therapy-row" data-therapy="sport"><span>Sport & Belastbarkeit</span><span>02</span></button>
-          <button class="therapy-row" data-therapy="neuro"><span>Neurologie</span><span>03</span></button>
-          <button class="therapy-row" data-therapy="cmd"><span>CMD / Kiefer</span><span>04</span></button>
-          <button class="therapy-row" data-therapy="becken"><span>Beckenboden & Funktion</span><span>05</span></button>
-          <div class="therapy-detail"><span class="eyebrow dark-label" data-therapy-kicker>Bewegung verstehen</span><p data-therapy-copy>Rücken, Nacken, Schulter oder Knie werden nicht isoliert betrachtet. Ziel ist, Belastung, Bewegung und mögliche Kompensationen in einen verständlichen Zusammenhang zu bringen.</p></div>
+          <div class="therapy-entry is-open" data-therapy-entry="orthopaedie">
+            <button class="therapy-row is-active" data-therapy="orthopaedie" aria-expanded="true"><span>Orthopädie & Bewegungsapparat</span><span>01</span></button>
+            <div class="therapy-inline-detail" data-therapy-detail="orthopaedie"></div>
+          </div>
+          <div class="therapy-entry" data-therapy-entry="sport">
+            <button class="therapy-row" data-therapy="sport" aria-expanded="false"><span>Sport & Belastbarkeit</span><span>02</span></button>
+            <div class="therapy-inline-detail" data-therapy-detail="sport"></div>
+          </div>
+          <div class="therapy-entry" data-therapy-entry="neuro">
+            <button class="therapy-row" data-therapy="neuro" aria-expanded="false"><span>Neurologie</span><span>03</span></button>
+            <div class="therapy-inline-detail" data-therapy-detail="neuro"></div>
+          </div>
+          <div class="therapy-entry" data-therapy-entry="cmd">
+            <button class="therapy-row" data-therapy="cmd" aria-expanded="false"><span>CMD / Kiefer</span><span>04</span></button>
+            <div class="therapy-inline-detail" data-therapy-detail="cmd"></div>
+          </div>
+          <div class="therapy-entry" data-therapy-entry="becken">
+            <button class="therapy-row" data-therapy="becken" aria-expanded="false"><span>Beckenboden & Funktion</span><span>05</span></button>
+            <div class="therapy-inline-detail" data-therapy-detail="becken"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -69,11 +97,10 @@
     <section class="team section section-dark" id="team">
       <div class="shell team-grid">
         <div class="team-intro"><span class="eyebrow">Team</span><h2>Persönlich genug, um Entwicklung zu sehen.</h2><p>Eine kleine Praxisstruktur schafft Kontinuität, Austausch und den Raum, therapeutische Entscheidungen individuell anzupassen.</p></div>
-        <div class="team-cards">
-          <article class="person person-featured"><div class="portrait portrait-sarah"><span>Portrait Sarah</span></div><div class="person-meta"><strong>Sarah Weber</strong><span>Praxisinhaberin · Functional Kinetic Science</span></div></article>
-          <article class="person"><div class="portrait"><span>Portrait</span></div><div class="person-meta"><strong>Anja Karolewicz</strong><span>Physiotherapie</span></div></article>
-          <article class="person"><div class="portrait"><span>Portrait</span></div><div class="person-meta"><strong>Annika Uhrmacher</strong><span>Physiotherapie</span></div></article>
-          <article class="person"><div class="portrait"><span>Portrait</span></div><div class="person-meta"><strong>Jessica Kleene</strong><span>Empfang</span></div></article>
+        <div class="team-cards team-cards-refined">
+          <article class="person person-featured person-sarah-wide"><div class="portrait portrait-sarah"><span>Portrait Sarah</span></div><div class="person-meta"><strong>Sarah Weber</strong><span>Praxisinhaberin · Functional Kinetic Science</span></div></article>
+          <article class="person person-square"><div class="portrait"><span>Portrait Anja</span></div><div class="person-meta"><strong>Anja Karolewicz</strong><span>Physiotherapie</span></div></article>
+          <article class="person person-square"><div class="portrait"><span>Portrait Jessica</span></div><div class="person-meta"><strong>Jessica Kleene</strong><span>Empfang</span></div></article>
         </div>
       </div>
     </section>
