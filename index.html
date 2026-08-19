@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="description" content="Konzeptentwurf für Raum und Zeit Physiotherapie in Düsseldorf-Oberkassel." />
+  <title>Raum & Zeit · Physiotherapie Düsseldorf</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top" aria-label="Raum und Zeit Startseite">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+        <path class="hg-top" d="M7 6h26c0 8-4 12-13 14C11 18 7 14 7 6Z"/>
+        <path class="hg-bottom" d="M7 34h26c0-8-4-12-13-14C11 22 7 26 7 34Z"/>
+      </svg>
+      <span>Raum & Zeit</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#therapie">Therapie</a>
+      <a href="#team">Team</a>
+      <a href="#news">News</a>
+      <a href="#kontakt">Kontakt</a>
+    </nav>
+    <a class="button button-small" href="#kontakt">Termin vereinbaren</a>
+  </header>
+
+  <main id="top">
+    <section class="hero shell">
+      <div class="hero-dark panel">
+        <div class="eyebrow">Privatpraxis · Düsseldorf-Oberkassel</div>
+        <h1>Nicht jeder Schmerz beginnt dort, wo man ihn spürt.</h1>
+        <p class="hero-copy">Raum und Zeit nimmt sich Zeit, Bewegung, Funktion und Zusammenhänge genauer zu verstehen.</p>
+        <div class="hero-signature" aria-hidden="true">
+          <span></span><span></span><span></span><span></span>
+        </div>
+      </div>
+
+      <div class="hero-light panel orientation" aria-labelledby="orientation-title">
+        <div class="orientation-head">
+          <div>
+            <div class="eyebrow dark-label">Orientierung</div>
+            <h2 id="orientation-title">Was möchten Sie gerade verstehen?</h2>
+          </div>
+          <div class="orientation-status"><span class="status-dot"></span>Auswählen</div>
+        </div>
+
+        <div class="orientation-list" role="list">
+          <button class="orientation-item is-active" data-key="fit" role="listitem">
+            <span class="num">01</span><span>Passt eure Arbeitsweise zu mir?</span><span class="arrow">↗</span>
+          </button>
+          <button class="orientation-item" data-key="time" role="listitem">
+            <span class="num">02</span><span>Ich suche eine Praxis, die sich mehr Zeit nimmt.</span><span class="arrow">↗</span>
+          </button>
+          <button class="orientation-item" data-key="therapy" role="listitem">
+            <span class="num">03</span><span>Ich möchte eure Therapie verstehen.</span><span class="arrow">↗</span>
+          </button>
+          <button class="orientation-item" data-key="team" role="listitem">
+            <span class="num">04</span><span>Ich interessiere mich für das Team.</span><span class="arrow">↗</span>
+          </button>
+        </div>
+
+        <div class="orientation-answer" aria-live="polite">
+          <div class="answer-kicker" data-answer-kicker>Arbeitsweise</div>
+          <p data-answer>Raum und Zeit betrachtet nicht nur den offensichtlichen Schmerzort. Bewegung, Funktion, Kompensationen, Atmung und Reaktion des Nervensystems helfen dabei, ein Gesamtbild zu entwickeln.</p>
+          <a href="#therapie" data-answer-link>Arbeitsweise ansehen <span>→</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="therapy section shell" id="therapie">
+      <div class="section-heading">
+        <span class="eyebrow dark-label">Therapie</span>
+        <h2>Verstehen, bevor behandelt wird.</h2>
+        <p>Methoden sind Werkzeuge. Entscheidend ist, welche Zusammenhänge im individuellen Fall relevant sind.</p>
+      </div>
+      <div class="therapy-stage">
+        <div class="therapy-visual" aria-hidden="true">
+          <div class="body-line"></div>
+          <div class="node n1"></div><div class="node n2"></div><div class="node n3"></div><div class="node n4"></div>
+          <div class="hourglass-large">
+            <svg viewBox="0 0 160 220">
+              <path d="M24 20h112c0 44-19 70-56 90-37-20-56-46-56-90Z"/>
+              <path d="M24 200h112c0-44-19-70-56-90-37 20-56 46-56 90Z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="therapy-list" data-therapy-list>
+          <button class="therapy-row is-active" data-therapy="orthopaedie"><span>Orthopädie & Bewegungsapparat</span><span>01</span></button>
+          <button class="therapy-row" data-therapy="sport"><span>Sport & Belastbarkeit</span><span>02</span></button>
+          <button class="therapy-row" data-therapy="neuro"><span>Neurologie</span><span>03</span></button>
+          <button class="therapy-row" data-therapy="cmd"><span>CMD / Kiefer</span><span>04</span></button>
+          <button class="therapy-row" data-therapy="becken"><span>Beckenboden & Funktion</span><span>05</span></button>
+          <div class="therapy-detail">
+            <span class="eyebrow dark-label" data-therapy-kicker>Bewegung verstehen</span>
+            <p data-therapy-copy>Rücken, Nacken, Schulter oder Knie werden nicht isoliert betrachtet. Ziel ist, Belastung, Bewegung und mögliche Kompensationen in einen verständlichen Zusammenhang zu bringen.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="team section section-dark" id="team">
+      <div class="shell team-grid">
+        <div class="team-intro">
+          <span class="eyebrow">Team</span>
+          <h2>Persönlich genug, um Entwicklung zu sehen.</h2>
+          <p>Eine kleine Praxisstruktur schafft Kontinuität, Austausch und den Raum, therapeutische Entscheidungen individuell anzupassen.</p>
+        </div>
+        <div class="team-cards">
+          <article class="person person-featured">
+            <div class="portrait portrait-sarah"><span>Portrait Sarah</span></div>
+            <div class="person-meta"><strong>Sarah Weber</strong><span>Praxisinhaberin · Functional Kinetic Science</span></div>
+          </article>
+          <article class="person"><div class="portrait"><span>Portrait</span></div><div class="person-meta"><strong>Anja Karolewicz</strong><span>Physiotherapie</span></div></article>
+          <article class="person"><div class="portrait"><span>Portrait</span></div><div class="person-meta"><strong>Annika Uhrmacher</strong><span>Physiotherapie</span></div></article>
+          <article class="person"><div class="portrait"><span>Portrait</span></div><div class="person-meta"><strong>Jessica Kleene</strong><span>Empfang</span></div></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="news section shell" id="news">
+      <div class="section-heading compact">
+        <span class="eyebrow dark-label">News</span>
+        <h2>Was sich bei Raum & Zeit bewegt.</h2>
+      </div>
+      <div class="news-grid" data-news></div>
+    </section>
+
+    <section class="contact section shell" id="kontakt">
+      <div class="contact-card">
+        <div class="contact-copy">
+          <span class="eyebrow">Kontakt</span>
+          <h2>Zeit, genauer hinzusehen.</h2>
+          <p>Raum und Zeit Physiotherapie<br>Düsseldorfer Str. 101 · Düsseldorf</p>
+          <p class="contact-note">Postleitzahl und E-Mail werden vor Veröffentlichung mit Sarah final bestätigt.</p>
+          <div class="contact-actions">
+            <a class="button button-light" href="tel:+4921170068095">0211 – 700 680 95</a>
+            <a class="button button-outline-light" href="#" data-route>Route öffnen</a>
+          </div>
+        </div>
+        <div class="map-placeholder" aria-label="Kartenplatzhalter">
+          <div class="map-grid"></div>
+          <div class="map-pin">
+            <svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 3c-7.2 0-13 5.8-13 13 0 9.7 13 21 13 21s13-11.3 13-21c0-7.2-5.8-13-13-13Zm0 18.2a5.2 5.2 0 1 1 0-10.4 5.2 5.2 0 0 1 0 10.4Z"/></svg>
+            <span>Raum & Zeit</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer shell">
+    <div class="brand footer-brand">
+      <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true"><path class="hg-top" d="M7 6h26c0 8-4 12-13 14C11 18 7 14 7 6Z"/><path class="hg-bottom" d="M7 34h26c0-8-4-12-13-14C11 22 7 26 7 34Z"/></svg>
+      <span>Raum & Zeit</span>
+    </div>
+    <div class="footer-links"><a href="#therapie">Therapie</a><a href="#team">Team</a><a href="#news">News</a><a href="#kontakt">Kontakt</a><span>Impressum</span><span>Datenschutz</span></div>
+    <div class="draft-note">Konzeptentwurf · nicht öffentlich</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
